@@ -2,12 +2,21 @@ const express = require('express'),
 bodyParser = require('body-parser');
 const path = require('path');
 const fs = require('fs');
+const cors = require('cors');
+const corsOptions = {
+  origin: 'https://lms-fleet-pro.herokuapp.com/',
+  optionsSuccessStatus: 200
+}
 
 const app = express();
 // const JSON = require('circular-json');
 var _ = require('lodash');
 
 app.use(bodyParser.json());
+
+
+app.use(cors(corsOptions));
+app.options('*', cors());
 
 // Serve static files from the React app
 app.use(express.static(path.join(__dirname, 'client/build')));

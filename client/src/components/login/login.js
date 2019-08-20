@@ -22,7 +22,7 @@ export class Login extends React.Component {
     } 
 
     componentDidMount(){
-        // const url = "http://localhost:3000/api/list";
+        // const url = "https://lms-fleet-pro.herokuapp.com/api/list";
         // superagent.get(url).end((err, res) => {
         //     if(err){
         //         throw err;
@@ -35,7 +35,7 @@ export class Login extends React.Component {
         // });
     }
     componentWillUnmount(){
-        const activeUserApi = "http://localhost:3000/api/user";
+        const activeUserApi = "https://lms-fleet-pro.herokuapp.com/api/user";
         superagent.post(activeUserApi).send({ name: this.state.userName }).set('accept', 'json').end((err, res) => {
             // Calling the end function will send the request
             console.log("User request: ", res, err);
@@ -49,7 +49,7 @@ export class Login extends React.Component {
 
     handleSubmit = (e) => {
         e.preventDefault();
-        const url = "http://localhost:3000/api/list";
+        const url = "https://lms-fleet-pro.herokuapp.com/api/list";
         superagent.get(url).end((err, res) => {
             if(err){
                 throw err;

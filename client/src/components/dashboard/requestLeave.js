@@ -41,7 +41,7 @@ class Dashboard extends React.Component {
     handleSubmit = (e) => {
         e.preventDefault();
         if(this.state.availableLeaves > 0){
-            const url = "http://localhost:3000/api/apply";
+            const url = "https://lms-fleet-pro.herokuapp.com/api/apply";
             console.log("UserDetails: ", this.state.department);
             superagent.post(url).send({ requestedBy: this.state.empName, empid: this.state.empid, department: this.state.department, reason: this.state.reason, requestedOn: dateFormat(this.state.dateOn, "mediumDate") }).set('accept', 'json').end((err, res) => {
                 // Calling the end function will send the request
@@ -71,7 +71,7 @@ class Dashboard extends React.Component {
     }
 
       componentDidMount(){
-        const url = "http://localhost:3000/api/list";
+        const url = "https://lms-fleet-pro.herokuapp.com/api/list";
         superagent.get(url).end((err, res) => {
             if(err){
                 throw err;

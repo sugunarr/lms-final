@@ -30,7 +30,7 @@ class Dashboard extends React.Component {
         console.log("Applied Leaves: ", this.state.appliedLeaves);
         // let getUserDetails = _.find(this.state.appliedLeaves, ['id', e.target.value]);
         let users = this.state.appliedLeaves;
-        const cancelReq = "http://localhost:3000/api/cancel";
+        const cancelReq = "https://lms-fleet-pro.herokuapp.com/api/cancel";
         superagent.post(cancelReq).send({ reqId: e.target.value, empid: this.state.empid }).set('accept', 'json').end((err, res) => {
             // Calling the end function will send the request
             console.log("User request: ", res, err);
@@ -51,7 +51,7 @@ class Dashboard extends React.Component {
         console.log(e.target.id);
         let _getTarget = e.target.id;
         let _getId = _getTarget.split('-');
-        const _actionApi = "http://localhost:3000/api/action/"+e.target.value;
+        const _actionApi = "https://lms-fleet-pro.herokuapp.com/api/action/"+e.target.value;
         superagent.post(_actionApi).send({ reqId: _getId[0], empName: _getId[1] }).set('accept', 'json').end((err, res) => {
             // Calling the end function will send the request
             console.log("User request: ", res, err);
@@ -75,7 +75,7 @@ class Dashboard extends React.Component {
       }
 
     componentDidMount(){
-        const url = "http://localhost:3000/api/list";
+        const url = "https://lms-fleet-pro.herokuapp.com/api/list";
         superagent.get(url).end((err, res) => {
             if(err){
                 throw err;
